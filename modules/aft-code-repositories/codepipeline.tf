@@ -144,7 +144,7 @@ resource "aws_codepipeline" "codestar_account_request" {
         ConnectionArn        = lookup({ github = local.connection_arn.github, bitbucket = local.connection_arn.bitbucket, githubenterprise = local.connection_arn.githubenterprise }, var.vcs_provider)
         FullRepositoryId     = var.account_request_repo_name
         BranchName           = var.account_request_repo_branch
-        #OAuthToken         = var.github_token # GitHub 토큰 사용
+        OAuthToken         = var.github_token # GitHub 토큰 사용
         DetectChanges        = true
         OutputArtifactFormat = "CODE_ZIP"
       }
@@ -277,7 +277,7 @@ resource "aws_codepipeline" "codestar_account_provisioning_customizations" {
         ConnectionArn        = lookup({ github = local.connection_arn.github, bitbucket = local.connection_arn.bitbucket, githubenterprise = local.connection_arn.githubenterprise }, var.vcs_provider)
         FullRepositoryId     = var.account_provisioning_customizations_repo_name
         BranchName           = var.account_provisioning_customizations_repo_branch
-        #OAuthToken         = var.github_token # GitHub 토큰 사용
+        OAuthToken         = var.github_token # GitHub 토큰 사용
         DetectChanges        = true
         OutputArtifactFormat = "CODE_ZIP"
       }
