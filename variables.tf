@@ -254,6 +254,18 @@ variable "account_provisioning_customizations_repo_branch" {
   }
 }
 
+# Non-OSS Variables
+variable "github_token" {
+  type        = string
+  description = "github token for Cloud or Enterprise"
+  default     = "null" # Non-sensitive default value #tfsec:ignore:general-secrets-no-plaintext-exposure
+  sensitive   = true
+  validation {
+    condition     = length(var.github_token) > 0
+    error_message = "Variable var: github_token cannot be empty."
+  }
+}
+
 #########################################
 # AFT Terraform Distribution Variables
 #########################################
